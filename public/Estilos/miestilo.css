@@ -1,0 +1,113 @@
+
+h1, p {
+    color: orangered;
+    margin: 2%;
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+}
+.grilla1{
+    background-color: black;
+    display: grid;
+    grid-template-areas: 
+    "Areaimg  AreaSecc";
+
+    grid-template-columns: 20% auto;
+}
+
+#Secc{
+    text-align: left;
+    grid-area: AreaSecc;
+}
+
+#div-logo {
+    display: flex;
+    margin: auto;
+    z-index: 100;
+    position: relative;
+    grid-area: Areaimg;
+    justify-content: center;
+}
+
+
+footer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+#formulario {
+    display: flex;
+    justify-content: center;
+}
+
+section p{
+    margin-right:15px ;
+    color: aliceblue;
+}
+
+ @media screen and (min-width:200px){
+    #grillainicio{
+        display: grid;
+        grid-template-areas:
+        
+        "ImgPrinc ImgPrinc"
+        "Mapa     Mapa"
+        "Contacto Contacto";
+
+        grid-template-columns: auto ;
+        grid-template-rows:  200px auto;
+    }
+
+    .grilla1{
+        grid-template-rows: 45px;
+    }
+
+    #div-logo img{
+        width: 75px;
+        
+    } 
+
+    footer {
+        height: 30px;
+        padding-top: 5px;
+        margin: 5px;
+        font-size: 9px;
+    }
+
+}
+
+
+@media screen and (min-width:900px) {
+
+
+    /* CSS Para computadora */
+    
+    .grilla1{
+        grid-template-rows: 120px;
+    }
+
+    #div-logo img{
+        width: 200px;
+        margin: 1%;
+    }
+
+
+    .imgredonda {
+        height: 250px;
+        width: 250px;
+        margin: 7px;
+
+    }
+    footer {
+        height: 40px;
+        padding-top: 10px;
+        margin: 5px;
+        font-size: 15px;
+    }
+
+
+    /* CSS Para computadora */
+}
