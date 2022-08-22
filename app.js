@@ -4,11 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('dotenv').config();
 var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
+var novedadesRouter = require('./routes/admin/novedades');
 const { title } = require('process');
 
 var app = express();
@@ -35,55 +37,24 @@ app.use(session({
 
 //app.use('/users', usersRouter);
 
+
+
+secured = async(req,res,next) => {
+  try{
+    console.log(req.session.id_usuario);
+    if(req.session.id_usuario){
+      next();
+    }else{
+      res.redirect('/admin/login');
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
+
 app.use('/admin/login', loginRouter);
-// app.use('/', indexRouter);
-
-app.get('/',function(req,res){
-  var conocido = Boolean(req.session.nombre);
-  if (req.session.nombre === usuarioadmin) {
-    if (req.session.contrasena === contrasenaadmin) {
-      res.render('index',{
-        title: "Pagina de admins",
-        nombre: req.session.nombre,
-        layout: 'admin/layout'
-      });
-    } else {
-      res.redirect('/admin/login');
-      
-    }
-  }
-  else {
-    res.redirect('/admin/login');    
-  }
-  
-});
-
-app.post('/ingresar', function (req, res) {
-
-  req.session.nombre = req.body.nombre
-  req.session.contrasena = req.body.contrasena
-  
-  if (req.session.nombre === usuarioadmin) {
-    if (req.session.contrasena === contrasenaadmin) {
-      res.redirect('/');
-    } else {
-      res.redirect('/admin/login');
-      
-    }
-  }
-  else {
-    res.redirect('/admin/login');    
-  }
-
-});
-
-app.get('/salir', function (req, res) {
-  req.session.destroy();
-  res.redirect('/');
-})
-
-
-
+app.use('/', indexRouter);
+app.use('/admin/novedades',secured,novedadesRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

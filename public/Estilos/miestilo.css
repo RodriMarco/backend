@@ -43,9 +43,10 @@ footer {
     justify-content: center;
 }
 
-section p{
+#msjformulario p{
+    justify-content: center;
+    
     margin-right:15px ;
-    color: aliceblue;
 }
 
  @media screen and (min-width:200px){

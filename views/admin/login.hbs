@@ -1,8 +1,16 @@
-    <section id="formulario">
-    <p>Introduci tus credenciales</p>
-    <form action="/ingresar" method="post">
+<section id="formulario">
+
+
+    <form method="post">
         <input type="text" name="nombre">
         <input type="text" name="contrasena">
         <button>ingresar</button>
     </form>
-    </section>
+</section>
+<div id="msjformulario">
+    {{#if error}}
+    <p>usuario y/o contraseña incorrectos</p>
+    {{/if}}{{#else}}
+    <p>Introduci tus credenciales</p>
+    {{/else}}
+</div>
