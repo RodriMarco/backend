@@ -4,6 +4,10 @@ h1, p {
     margin: 2%;
 }
 
+#tablaAdmin{
+    color: orangered;
+}
+
 body {
     background-color: rgb(30, 30, 30);
 }
@@ -47,6 +51,10 @@ footer {
     justify-content: center;
     
     margin-right:15px ;
+}
+
+textarea{
+    color: black;
 }
 
  @media screen and (min-width:200px){
