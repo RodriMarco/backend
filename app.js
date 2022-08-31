@@ -3,20 +3,24 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fileUpload = require('express-fileupload');
+var cors = require('cors');
 
 require('dotenv').config();
 var session = require('express-session');
 
 var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
 var novedadesRouter = require('./routes/admin/novedades');
-const { title } = require('process');
+var apiRouter = require('./routes/api');
+
+const {
+  title
+} = require('process');
 
 var app = express();
 
-var usuarioadmin = "rodriadmin";
-var contrasenaadmin = "ironboxingadmin";
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +28,9 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -39,22 +45,29 @@ app.use(session({
 
 
 
-secured = async(req,res,next) => {
-  try{
+secured = async (req, res, next) => {
+  try {
     console.log(req.session.id_usuario);
-    if(req.session.id_usuario){
+    if (req.session.id_usuario) {
       next();
-    }else{
+    } else {
       res.redirect('/admin/login');
     }
-  }catch(error){
+  } catch (error) {
     console.log(error);
   }
 }
 
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/temp/'
+}));
+
 app.use('/admin/login', loginRouter);
 app.use('/', indexRouter);
-app.use('/admin/novedades',secured,novedadesRouter);
+app.use('/admin/novedades', secured, novedadesRouter);
+app.use('/api', cors(), apiRouter);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
