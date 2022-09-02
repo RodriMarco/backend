@@ -11,7 +11,10 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/admin/login');
+var organizadorRouter = require('./routes/admin/organizador');
 var novedadesRouter = require('./routes/admin/novedades');
+var horariosRouter = require('./routes/admin/horarios');
+
 var apiRouter = require('./routes/api');
 
 const {
@@ -41,10 +44,6 @@ app.use(session({
 }));
 
 
-//app.use('/users', usersRouter);
-
-
-
 secured = async (req, res, next) => {
   try {
     console.log(req.session.id_usuario);
@@ -65,7 +64,9 @@ app.use(fileUpload({
 
 app.use('/admin/login', loginRouter);
 app.use('/', indexRouter);
+app.use('/admin/organizador', secured, organizadorRouter);
 app.use('/admin/novedades', secured, novedadesRouter);
+app.use('/admin/horarios', secured, horariosRouter);
 app.use('/api', cors(), apiRouter);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,35 @@
+<div class="container" style="margin:100px auto ">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4 style="color: white;">Agregar Clase</h4>
+            <form action="/admin/horarios/modificarhorario" method="post" enctype="multipart/form-data">
+            <input type="hidden" value="{{horario.id}}" name="id">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Horario" name="horario" value ="{{horario.horario}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Lunes para este horario" name="dia1" value ="{{horario.dia1}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Martes para este horario" name="dia2" value ="{{horario.dia2}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Miercoles para este horario" name="dia3" value ="{{horario.dia3}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Jueves para este horario" name="dia4" value ="{{horario.dia4}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Viernes para este horario" name="dia5" value ="{{horario.dia5}}"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Sabado para este horario" name="dia6" value ="{{horario.dia6}}"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+<h5 style="color: red;">{{message}}</h5>
+{{/if}}

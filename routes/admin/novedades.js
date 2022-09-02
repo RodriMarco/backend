@@ -134,4 +134,9 @@ router.post('/modificar', async (req, res, next) => {
     }
 });
 
+
+router.get('/organizador', async (req, res, next) => {
+    res.redirect('admin/organizador')
+});
+
 module.exports = router;

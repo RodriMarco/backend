@@ -1,0 +1,34 @@
+<div class="container" style="margin:100px auto ">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4 style="color: white;">Agregar Clase</h4>
+            <form action="/admin/horarios/agregarClase" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Horario" name="horario"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Lunes para este horario" name="dia1"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Martes para este horario" name="dia2"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Miercoles para este horario" name="dia3"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Jueves para este horario" name="dia4"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Viernes para este horario" name="dia5"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Colocar profe del Sabado para este horario" name="dia6"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+<h5 style="color: red;">{{message}}</h5>
+{{/if}}
