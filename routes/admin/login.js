@@ -4,10 +4,9 @@ var usuariosModel = require('./../../models/usuariosModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('admin/login',{
-    layout:'admin/layout',
-    error:false
-  }); //En res.render admin/login es el body de alguna manera que se usa en el layout.hbs
+  
+  res.redirect('/admin/login');
+  //En res.render admin/login es el body de alguna manera que se usa en el layout.hbs
 });
 
 router.post('/',async(req, res, next) => {
