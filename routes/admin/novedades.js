@@ -47,16 +47,16 @@ router.get('/agregar', (req, res, next) => {
 router.post('/agregar', async (req, res, next) => {
     try {
 
-        // var img_id = '';
-        // if (req.files && Object.keys(req.files).length > 0) {
-        //     imagen = req.files.imagen;
-        //     img_id = (await uploader(imagen.tempFilePath)).public_id;
-        // }
-        // console.log(img_id);
+        var img_id = '';
+        if (req.files && Object.keys(req.files).length > 0) {
+            imagen = req.files.imagen;
+            img_id = (await uploader(imagen.tempFilePath)).public_id;
+        }
+        console.log(img_id);
         if (req.body.titulo != "" && req.body.cuerpo != "" && req.body.fecha != "") {
             await novedadesModel.insertNovedades({
-                ...req.body // spread > titulo,sub,cuerpo
-                // img_id
+                ...req.body, // spread > titulo,sub,cuerpo
+                img_id
             });
             res.redirect('/admin/novedades')
         } else {
