@@ -4,8 +4,11 @@ var usuariosModel = require('./../../models/usuariosModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  
-  res.redirect('/admin/login');
+  res.render('admin/login',{
+    layout:'admin/layout',
+    error:false
+  });
+
   //En res.render admin/login es el body de alguna manera que se usa en el layout.hbs
 });
 
@@ -33,9 +36,7 @@ router.post('/',async(req, res, next) => {
 
 router.get('/logout', function(req,res,next){
   req.session.destroy();
-  res.redirect('admin/login',{
-    layout:'admin/layout'
-  });
+  res.redirect('/admin/login');
 });
 
 module.exports = router;
