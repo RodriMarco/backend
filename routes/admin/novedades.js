@@ -6,7 +6,6 @@ const cloudinary = require('cloudinary').v2;
 const uploader = util.promisify(cloudinary.uploader.upload);
 const destroy = util.promisify(cloudinary.uploader.destroy);
 
-
 router.get('/', async function (req, res, next) {
     var novedades = await novedadesModel.getNovedades();
 
@@ -53,11 +52,14 @@ router.post('/agregar', async (req, res, next) => {
             img_id = (await uploader(imagen.tempFilePath)).public_id;
         }
         console.log(img_id);
+       
         if (req.body.titulo != "" && req.body.cuerpo != "" && req.body.fecha != "") {
             await novedadesModel.insertNovedades({
                 ...req.body, // spread > titulo,sub,cuerpo
                 img_id
+                
             });
+            console.log(img_id);
             res.redirect('/admin/novedades')
         } else {
             res.render('admin/agregar', {
@@ -108,8 +110,9 @@ router.post('/modificar', async (req, res, next) => {
             borrar_img_vieja = true;
            } else{
             if(req.files && Object.keys(req.files).length > 0){
-                imagen=req.files.imagen;
-                img_id = (await uploader(imagen.tempFilePath)).public_id;
+                imagen = req.files.imagen;
+                img_id = (await 
+                uploader(imagen.tempFilePath)).public_id;
                 borrar_img_vieja = true;
             }
            }

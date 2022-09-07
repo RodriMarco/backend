@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-09-2022 a las 20:21:03
+-- Tiempo de generación: 07-09-2022 a las 02:16:47
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -66,18 +66,14 @@ CREATE TABLE IF NOT EXISTS `bdnovedades` (
   `cuerpo` text NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `bdnovedades`
 --
 
 INSERT INTO `bdnovedades` (`id`, `img_id`, `titulo`, `cuerpo`, `fecha`) VALUES
-(1, NULL, 'Novedad 1', 'Cinturon rendido', '2022-09-02'),
-(5, 'kivrx24hysniavofcqi4', 'Rodri ', 'Nuevas clases de ', '2022-09-30'),
-(6, NULL, 'Nueva 5', 'Esto es una prueba ', '2022-01-01'),
-(11, 'yexwljmrvmprtutyugnm', 'Prueba logo', 'logo del Mamba team', '2022-01-01'),
-(10, 'arjszoxgrcq7yivqoucc', 'deberia andar la img ahora', 'aa', '2022-01-01');
+(1, 'xckp6vpjcr3pyquxmitg', 'Combate semiprofesional k1 style', 'Combate semiprofesional k1 style\r\nAquino vs. Nuñez\r\n\r\n\r\nEn la Federación Argentina de box, Castro Barros 75, Almagro, CABA\r\n\r\n¡Gracias a la organización por la invitación!', '2022-09-10');
 
 -- --------------------------------------------------------
 
